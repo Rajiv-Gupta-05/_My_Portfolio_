@@ -179,7 +179,7 @@
 
           <div class="box-container">
             <div class="box">
-              <p><span> age: </span> 25</p>
+              <p><span> age: </span><span id="age"></span></p>
               <p><span> phone : </span> +91 800-249-7171</p>
             </div>
             <div class="box">
@@ -1130,21 +1130,29 @@
     </script>
     <!--End of Tawk.to Script-->
 
-    <!-- Timer Starts  -->
+    <!--Dynamic Age update on the basis of DOB:-->
     <script>
-      function updateTimer() {
-        const timer = document.querySelector(".timer");
-        const now = new Date();
-        const hours = String(now.getHours()).padStart(2, "0");
-        const minutes = String(now.getMinutes()).padStart(2, "0");
-        const seconds = String(now.getSeconds()).padStart(2, "0");
-        timer.innerHTML = `<span id="hours">${hours}</span>:<span id="minutes">${minutes}</span>:<span id="seconds">${seconds}</span>`;
+      function calculateAge(birthDate) {
+        const today = new Date();
+        const birthDateObj = new Date(birthDate);
+        let age = today.getFullYear() - birthDateObj.getFullYear();
+        const monthDiff = today.getMonth() - birthDateObj.getMonth();
+    
+        // Adjust age if the birthdate hasn't occurred yet this year
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDateObj.getDate())) {
+          age--;
+        }
+    
+        return age;
       }
-      // Update the timer every second
-      setInterval(updateTimer, 1000);
-      // Initial update
-      updateTimer();
+    
+      document.addEventListener("DOMContentLoaded", () => {
+        const birthDate = "1998-11-05"; // yyyy-mm-dd format
+        const ageElement = document.getElementById("age");
+        ageElement.textContent = calculateAge(birthDate);
+      });
     </script>
-    <!-- Timer ends  -->
+     <!--Dynamic Age update Ends:-->
+
   </body>
 </html>

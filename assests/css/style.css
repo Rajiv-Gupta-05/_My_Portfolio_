@@ -413,6 +413,9 @@ header .navbar ul li a:hover{
   font-family: 'Nunito';
   font-weight: 600;
 }
+#age {
+  color: black;
+}
 .about .row .content .box-container .box p{
   text-transform: none;
 }
