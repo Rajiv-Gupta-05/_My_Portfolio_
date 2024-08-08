@@ -79,6 +79,15 @@ section{
   font-weight: 800;
   text-align: center;
 }
+
+/* Media Query for mobile responsive start */
+@media only screen and (max-width: 425px) {
+  .heading {
+    font-size: 2rem;
+  }
+}
+/* Media Query for mobile responsive end */
+
 .heading span{
   color: rgb(115, 3, 167);
 }
@@ -1359,5 +1368,3 @@ form .button-area{
   top: calc(100% - 12rem);
 }
 /* scroll top ends */
-
-
